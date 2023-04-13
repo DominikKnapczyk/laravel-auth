@@ -26,7 +26,7 @@ Route::middleware('auth')
     ->name('admin.')
     ->group(function() {
         Route::resource('posts', PostController::class)
-        ->parameters(['posts' => 'posts:slug']);
+        ->parameters(['posts' => 'post:slug']);
     });
 
 Route::middleware('auth')->group(function () {

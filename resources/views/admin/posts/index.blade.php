@@ -2,7 +2,9 @@
 
 @section('content')
   <section class="container">
-    @dump($posts)
+    {{-- @dump($posts) --}}
+
+    <h1 class="my-3">Esperienze</h1>
 
     <table class="table table-striped">
       <thead>
@@ -16,13 +18,19 @@
         @forelse($posts as $post)
         <tr>
           <th scope="row">{{ $post->id }}</th>
-          <td>{{ $post->title }}</td>
+          <td>{{ $post-> title }}</td>
           <td>{{ $post->getAbstract() }}</td>
-          <td></td>
+          <td>
+            <a href="{{ route('admin.posts.show', $post) }}">
+              <i class="bi bi-eye"></i>
+            </a>
+          </td>
         </tr>
         @empty
         @endforelse
       </tbody>
     </table>
+
+    {{ $posts->links() }}
   </section>
 @endsection
