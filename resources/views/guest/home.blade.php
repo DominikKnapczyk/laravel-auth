@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-md-8">
                             <h2 class="font-weight-bold mb-4">Il mio portfolio</h2>
-                            <p class="mb-2">Ciao! Sono Dominik, un Full Stack Web Developer. Ho frequentato il corso di Boolean, che mi ha permesso di acquisire conoscenze approfondite in diverse tecnologie, tra cui:</p>
+                            <p class="mb-2">Ciao! Sono Dominik, un Full Stack Web Developer Junior. Ho frequentato il corso di Boolean, che mi ha permesso di acquisire conoscenze approfondite in diverse tecnologie, tra cui:</p>
                             <ul class="mb-4">
                                 <li>Frontend: HTML, CSS, JavaScript, Vue.js e Vite.js</li>
                                 <li>Backend: PHP, SQL e Laravel</li>

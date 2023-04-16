@@ -27,6 +27,13 @@
       </tbody>
     </table>
 
-    {{ $posts->links() }}
+    <div class="row">
+      <div class="col-10">
+        {{ $posts->links() }}
+      </div>
+      <div class="col-2">
+        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Nuovo post</a>
+      </div>
+    </div>
   </section>
 @endsection
