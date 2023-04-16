@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} | Back Office</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
 
     <!-- Fonts -->
@@ -25,7 +25,8 @@
 <body>
     <div>
         @include('layouts.partials.navbar')
-        <main class="">
+        <main>
+            <h1 class="my-3">@yield('title')</h1>
             @yield('content')
         </main>
     </div>

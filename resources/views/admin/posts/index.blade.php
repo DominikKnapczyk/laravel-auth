@@ -2,10 +2,6 @@
 
 @section('content')
   <section class="container">
-    {{-- @dump($posts) --}}
-
-    <h1 class="my-3">Esperienze</h1>
-
     <table class="table table-striped">
       <thead>
         <tr>
