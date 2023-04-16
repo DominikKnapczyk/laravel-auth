@@ -11,15 +11,29 @@
         </tr>
       </thead>
       <tbody>
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
         @forelse($posts as $post)
         <tr>
-          <th scope="row">{{ $post->id }}</th>
-          <td>{{ $post-> title }}</td>
+          <td>{{ $post->id }}</td>
+          <td>{{ $post->title }}</td>
           <td>{{ $post->getAbstract() }}</td>
-          <td>
+          <td class="align-middle">
             <a href="{{ route('admin.posts.show', $post) }}">
               <i class="bi bi-eye"></i>
             </a>
+          </td>
+          <td class="align-middle">
+            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-link">
+                <i class="bi bi-x-circle text-danger"></i>
+              </button>
+            </form>
           </td>
         </tr>
         @empty
@@ -36,4 +50,6 @@
       </div>
     </div>
   </section>
+  
 @endsection
+

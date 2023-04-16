@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -37,9 +38,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'text' => 'required',
+            'image' => 'required|url',
+        ]);
+    
+        $post = new Post();
+        $post->title = $validatedData['title'];
+        $post->slug = Str::slug($validatedData['title']);
+        $post->text = $validatedData['text'];
+        $post->image = $validatedData['image'];
+        
+        if (!$post->save()) {
+            return redirect()->back()->withErrors('Si è verificato un errore durante il salvataggio del post.');
+        }
+    
+        return redirect()->route('admin.posts.index')->with('status', 'Il post è stato pubblicato correttamente!');
     }
-
+    
+    
+    
+    
     /**
      * Display the specified resource.
      *
@@ -82,6 +102,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+    
+        return redirect()->route('admin.posts.index')->with('status', 'Post eliminato correttamente');
     }
 }
