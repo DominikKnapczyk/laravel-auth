@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
+use App\Http\Controllers\Guest\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,5 +40,10 @@ Route::get('/admin/posts/create', 'App\Http\Controllers\Admin\PostController@cre
 
 Route::delete('/admin/posts/{post}', 'App\Http\Controllers\Admin\PostController@destroy')->name('admin.posts.destroy');
 
+Route::get('/projects', [App\Http\Controllers\Guest\ProjectController::class, 'index'])->name('guest.projects.index');
+
+Route::get('/guest/projects/{post}', 'App\Http\Controllers\Guest\ProjectController@show')->name('guest.showProjects');
+
+Route::get('/guest/projects', [ProjectController::class, 'index'])->name('guest.projects');
 
 require __DIR__.'/auth.php';
